@@ -2,30 +2,77 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Detalle de Película</title>
+    <title>CineUPS — Detalle de Película</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap CSS + Icons -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+
+    <!-- Estilos del tema (nota la ruta relativa desde /pages/) -->
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
-    <div class="container py-5">
-      <div class="text-center mb-4">
-        <h2 id="titulo" class="mb-3"></h2>
-
-        <!-- Componente: Alerta informativa -->
-        <div class="alert alert-info" role="alert">
-          ¡Disfruta del tráiler oficial y conoce más sobre esta película!
-        </div>
-
-        <!-- Tráiler embebido -->
-        <div class="ratio ratio-16x9 mb-4">
-          <iframe id="trailer" src="" allowfullscreen></iframe>
+    <!-- NAVBAR común -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html">CinePlus</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navCine"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navCine">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="renta.html">Renta</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contacto.html">Contacto</a>
+            </li>
+          </ul>
         </div>
       </div>
+    </nav>
 
-      <!-- Tarjeta con sinopsis e imagen -->
+    <!-- Encabezado -->
+    <header class="hero">
+      <div class="container py-4 text-center">
+        <h1 id="titulo" class="mb-1"></h1>
+        <div class="text-muted">Selección de Marcelo</div>
+        <div id="estado-precio" class="mt-2"></div>
+      </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main id="detalle-pelicula" class="container py-4">
+      <div class="alert alert-info mb-4" role="alert">
+        Consulte el tráiler oficial y la información detallada de la película.
+      </div>
+
+      <div class="ratio ratio-16x9 mb-4">
+        <iframe id="trailer" src="" allowfullscreen></iframe>
+      </div>
+
       <div class="card mb-4">
         <div class="row g-0">
           <div class="col-md-4">
@@ -33,64 +80,65 @@
               id="poster"
               src=""
               class="img-fluid rounded-start"
-              alt="Poster de la película"
+              alt="Póster de la película"
             />
           </div>
           <div class="col-md-8">
             <div class="card-body">
               <h5 class="card-title">Sinopsis</h5>
               <p id="sinopsis" class="card-text"></p>
-
-              <!-- Componente: Badge de género -->
-              <span id="genero" class="badge bg-secondary"></span>
+              <span id="generos" class="badge bg-secondary"></span>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="text-center">
-        <a href="../index.html" class="btn btn-secondary">Volver al inicio</a>
+      <div class="card mb-4">
+        <div class="card-body">
+          <div class="d-flex align-items-center justify-content-between">
+            <h5 class="card-title mb-3">Reseñas</h5>
+            <!-- Botón Reservar en el detalle -->
+            <div>
+              <a href="../index.html" class="btn btn-outline-secondary me-2"
+                >Volver al inicio</a
+              >
+              <a id="btn-reservar" href="renta.html" class="btn btn-success"
+                >Reservar</a
+              >
+            </div>
+          </div>
+          <div id="resumen-resenas" class="small text-muted mb-2"></div>
+          <div id="lista-resenas" class="list-group"></div>
+        </div>
       </div>
-    </div>
+    </main>
 
+    <!-- Footer sticky -->
+    <footer class="text-center py-3">
+      <small>&copy; 2024 CinePlus — Universidad Politécnica Salesiana.</small>
+    </footer>
+
+    <!-- Librerías -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Activa link actual en navbar -->
     <script>
-      $(function () {
-        const urlParams = new URLSearchParams(window.location.search);
-        const id = urlParams.get("id");
-
-        $.ajax({
-          url: "../data/peliculas.json",
-          method: "GET",
-          dataType: "json",
-          success: function (peliculas) {
-            const peli = peliculas.find((p) => p.id == id);
-            if (peli) {
-              $("#titulo").text(peli.titulo);
-              $("#poster").attr("src", "../img/" + peli.imagen);
-              $("#sinopsis").text(peli.sinopsis);
-              $("#trailer").attr("src", peli.trailer);
-              $("#genero").text(peli.genero);
-            } else {
-              mostrarError();
-            }
-          },
-          error: function () {
-            mostrarError();
-          },
+      (function markActive() {
+        const path = location.pathname.replace(/\/+$/, "");
+        document.querySelectorAll(".navbar .nav-link").forEach((a) => {
+          const href = a.getAttribute("href");
+          // normaliza para rutas relativas dentro de /pages/
+          const ends = path.endsWith(href) || path.endsWith("/" + href);
+          if (ends) {
+            a.classList.add("active");
+            a.setAttribute("aria-current", "page");
+          }
         });
-
-        function mostrarError() {
-          $("#detalle-pelicula").html(`
-          <div class="alert alert-danger text-center" role="alert">
-            No se pudo cargar la información de la película.
-          </div>
-          <div class="text-center">
-            <a href="../index.html" class="btn btn-secondary mt-3">Volver al inicio</a>
-          </div>
-        `);
-        }
-      });
+      })();
     </script>
+
+    <!-- Lógica de detalle -->
+    <script src="../js/detalle.js"></script>
   </body>
 </html>

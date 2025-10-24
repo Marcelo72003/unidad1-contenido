@@ -2,25 +2,81 @@
   {
     "id": 1,
     "titulo": "Dune",
-    "imagen": "dune.jpg",
-    "genero": "Aventura",
-    "sinopsis": "Un joven emprende una misión para salvar su mundo.",
-    "trailer": "https://www.youtube.com/embed/mSY_NbSmaUI"
+    "generos": ["Aventura", "Ciencia ficción"],
+    "imagen": "img/dune.jpg",
+    "sinopsis": "En un futuro lejano, Paul Atreides ...",
+    "trailer": "https://www.youtube.com/embed/mSY_NbSmaUI",
+    "estreno": "2024-10-01",
+    "precios": { "estreno": 6.5, "normal": 3.5 }
   },
   {
     "id": 2,
     "titulo": "50 primeras citas",
-    "imagen": "50-primeras-citas.jpg",
-    "genero": "Comedia",
-    "sinopsis": "Henry se enamora de Lucy, una mujer con pérdida de memoria a corto plazo.",
-    "trailer": "https://www.youtube.com/embed/17KJk3ErIx0"
+    "generos": ["Comedia", "Romance"],
+    "imagen": "img/50-primeras-citas.jpg",
+    "sinopsis": "Henry se enamora de Lucy ...",
+    "trailer": "https://www.youtube.com/embed/17KJk3ErIx0",
+    "estreno": "2024-03-15",
+    "precios": { "estreno": 5.0, "normal": 3.0 }
   },
   {
     "id": 3,
-    "titulo": "Batman Caballero de la Noche",
-    "imagen": "batman-caballero-de-la-noche.webp",
-    "genero": "Acción",
-    "sinopsis": "La película comienza con el violento robo de uno de los bancos de la mafia por una banda de payasos.",
-    "trailer": "https://www.youtube.com/embed/dzQtWkpc2-c"
+    "titulo": "Batman: El Caballero de la Noche",
+    "generos": ["Acción", "Suspenso"],
+    "imagen": "img/batman-caballero-de-la-noche.webp",
+    "sinopsis": "Batman se enfrenta a su mayor desafío ...",
+    "trailer": "https://www.youtube.com/embed/dzQtWkpc2-c",
+    "estreno": "2025-01-10",
+    "precios": { "estreno": 6.0, "normal": 3.5 }
+  },
+  {
+    "id": 4,
+    "titulo": "Proyecto Darwin",
+    "generos": ["Acción", "Ciencia ficción"],
+    "imagen": "img/ProyectoDarwin.png",
+    "sinopsis": "En un laboratorio secreto en Quito ...",
+    "trailer": "https://www.youtube.com/embed/tgbNymZ7vqY",
+    "estreno": "2025-02-10",
+    "precios": { "estreno": 6.5, "normal": 3.5 }
+  },
+  {
+    "id": 5,
+    "titulo": "Código del Futuro",
+    "generos": ["Acción", "Tecnología", "Drama"],
+    "imagen": "img/CodigoFuturo.png",
+    "sinopsis": "Un grupo de estudiantes de ingeniería ...",
+    "trailer": "https://www.youtube.com/embed/oHg5SJYRHA0",
+    "estreno": "2024-11-25",
+    "precios": { "estreno": 6.0, "normal": 3.0 }
+  },
+  {
+    "id": 6,
+    "titulo": "404: Error de la Vida",
+    "generos": ["Comedia", "Drama"],
+    "imagen": "img/404.png",
+    "sinopsis": "Marcelo, un estudiante de software ...",
+    "trailer": "https://www.youtube.com/embed/sNPnbI1arSE",
+    "estreno": "2024-08-10",
+    "precios": { "estreno": 5.5, "normal": 3.0 }
+  },
+  {
+    "id": 7,
+    "titulo": "IA: El Despertar de la Conciencia",
+    "generos": ["Ciencia ficción", "Biográfica"],
+    "imagen": "img/IA.png",
+    "sinopsis": "Inspirada en hechos reales ...",
+    "trailer": "https://www.youtube.com/embed/LXb3EKWsInQ",
+    "estreno": "2025-03-20",
+    "precios": { "estreno": 6.5, "normal": 3.5 }
+  },
+  {
+    "id": 8,
+    "titulo": "Código del Café",
+    "generos": ["Comedia", "Amistad"],
+    "imagen": "img/COFFFE.png",
+    "sinopsis": "Un grupo de jóvenes programadores ...",
+    "trailer": "https://www.youtube.com/embed/l9PxOanFjxQ",
+    "estreno": "2024-07-05",
+    "precios": { "estreno": 5.0, "normal": 3.0 }
   }
 ]

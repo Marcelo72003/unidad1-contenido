@@ -1,0 +1,122 @@
+{
+  "1": [
+    {
+      "autor": "Ana",
+      "texto": "Visualmente impactante y con ritmo envolvente.",
+      "calificacion": 4
+    },
+    {
+      "autor": "Luis",
+      "texto": "Gran historia y música memorable.",
+      "calificacion": 5
+    },
+    {
+      "autor": "Sofía",
+      "texto": "Algunas escenas largas, pero excelente.",
+      "calificacion": 4
+    }
+  ],
+  "2": [
+    {
+      "autor": "Carlos",
+      "texto": "Ligera y entretenida, ideal para familia.",
+      "calificacion": 4
+    },
+    {
+      "autor": "Vale",
+      "texto": "Humor simple pero efectivo.",
+      "calificacion": 3
+    },
+    {
+      "autor": "Pablo",
+      "texto": "Bonita historia con mensaje positivo.",
+      "calificacion": 4
+    }
+  ],
+  "3": [
+    {
+      "autor": "María",
+      "texto": "Tensión constante y actuaciones brillantes.",
+      "calificacion": 5
+    },
+    {
+      "autor": "Jorge",
+      "texto": "Un clásico moderno del género.",
+      "calificacion": 5
+    },
+    {
+      "autor": "Elena",
+      "texto": "Oscura, inteligente y muy bien dirigida.",
+      "calificacion": 4
+    }
+  ],
+  "4": [
+    {
+      "autor": "Diego",
+      "texto": "Sci-fi emocionante con toques locales.",
+      "calificacion": 4
+    },
+    {
+      "autor": "Meli",
+      "texto": "Visualmente poderosa, me encantó.",
+      "calificacion": 5
+    },
+    {
+      "autor": "Andrés",
+      "texto": "Ideas interesantes sobre IA y ética.",
+      "calificacion": 4
+    }
+  ],
+  "5": [
+    {
+      "autor": "Tania",
+      "texto": "Buen ritmo y tensión tecnológica.",
+      "calificacion": 4
+    },
+    {
+      "autor": "Beto",
+      "texto": "Algunas partes confusas, pero funciona.",
+      "calificacion": 3
+    },
+    {
+      "autor": "Nora",
+      "texto": "Personajes cercanos y creíbles.",
+      "calificacion": 4
+    }
+  ],
+  "6": [
+    {
+      "autor": "Iván",
+      "texto": "Comedia amable con corazón.",
+      "calificacion": 4
+    },
+    {
+      "autor": "Sara",
+      "texto": "Me identifiqué con el protagonista.",
+      "calificacion": 4
+    },
+    { "autor": "Juan", "texto": "Divertida y sincera.", "calificacion": 3 }
+  ],
+  "7": [
+    { "autor": "Leo", "texto": "Inspiradora y profunda.", "calificacion": 5 },
+    {
+      "autor": "Katy",
+      "texto": "Reflexiva y bien contada.",
+      "calificacion": 4
+    },
+    {
+      "autor": "Rafa",
+      "texto": "Excelente mezcla de emoción y ciencia.",
+      "calificacion": 5
+    }
+  ],
+  "8": [
+    { "autor": "Gina", "texto": "Encantadora y optimista.", "calificacion": 3 },
+    {
+      "autor": "Fede",
+      "texto": "Bonitos diálogos y ritmo ágil.",
+      "calificacion": 4
+    },
+    { "autor": "Luz", "texto": "Sencilla pero efectiva.", "calificacion": 4 }
+  ]
+}
