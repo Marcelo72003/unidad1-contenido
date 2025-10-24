@@ -1,4 +1,12 @@
 // /js/app.js  (listado)
+// ---------- ALERTA DE BIENVENIDA ----------
+document.addEventListener("DOMContentLoaded", () => {
+  const KEY = "welcome_shown_v1";
+  if (!localStorage.getItem(KEY)) {
+    alert("🎬 ¡Bienvenido/a al catálogo de películas!");
+    localStorage.setItem(KEY, "true");
+  }
+});
 $(document).ready(function () {
   const contenedor = $("#lista-peliculas");
 

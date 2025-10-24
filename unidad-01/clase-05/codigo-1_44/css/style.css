@@ -1,9 +1,189 @@
+/* =========================
+   Tema UPS (CinePlus)
+   ========================= */
+:root {
+  /* Colores institucionales */
+  --ups-navy: #0c3c78; /* barra superior/nav principal */
+  --ups-blue: #1457a6; /* botones/acentos primarios */
+  --ups-sky: #1e7ad6; /* hovers y enlaces */
+  --ups-yellow: #ffcc00; /* acento (botones/badges) */
+  --ups-dark: #0b1e42; /* textos oscuros / fondos profundos */
+
+  /* UI neutrales */
+  --cp-bg: #f5f8fc; /* fondo sitio */
+  --cp-card: #ffffff; /* fondo tarjetas */
+  --cp-border: #e6ebf3; /* bordes suaves */
+  --cp-muted: #6b86ad; /* texto secundario */
+
+  /* Tipografía */
+  --cp-font: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --cp-display: "Playfair Display", serif;
+
+  /* Forma */
+  --cp-radius: 14px;
+  --cp-shadow: 0 10px 20px rgba(11, 30, 66, 0.06),
+    0 2px 6px rgba(11, 30, 66, 0.06);
+}
+
+/* Layout base + sticky footer */
+html,
 body {
-    background-color: #f8f9fa;
-  }
-  
-  .card img {
-    height: 250px;
-    object-fit: cover;
-  }
-  
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  background: var(--cp-bg);
+  color: #0b1220;
+  font-family: var(--cp-font);
+  -webkit-font-smoothing: antialiased;
+}
+main {
+  flex: 1;
+} /* Empuja el footer al fondo siempre */
+footer {
+  margin-top: auto;
+  background: var(--ups-navy);
+  color: #eef2ff;
+}
+
+/* Tipografía de títulos */
+h1,
+h2,
+h3 {
+  font-family: var(--cp-display);
+  letter-spacing: 0.2px;
+}
+h1,
+h2 {
+  font-weight: 700;
+}
+
+/* NAVBAR (presente en TODAS las páginas) */
+.navbar {
+  background: var(--ups-navy) !important;
+  box-shadow: var(--cp-shadow);
+}
+.navbar .navbar-brand {
+  font-family: var(--cp-display);
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.navbar .nav-link {
+  color: #dbe7ff !important;
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  margin: 0 0.125rem;
+}
+.navbar .nav-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff !important;
+}
+.navbar .nav-link.active,
+.navbar .nav-link[aria-current="page"] {
+  background: #0e4e99; /* más claro que el navy */
+  color: #fff !important;
+}
+
+/* Encabezado hero */
+header.hero {
+  background: linear-gradient(
+    180deg,
+    rgba(12, 60, 120, 0.1),
+    rgba(12, 60, 120, 0.02)
+  );
+  border-bottom: 1px solid var(--cp-border);
+}
+
+/* Cards */
+.card {
+  background: var(--cp-card);
+  border: 1px solid var(--cp-border);
+  border-radius: var(--cp-radius);
+  box-shadow: var(--cp-shadow);
+  overflow: hidden;
+}
+.card:hover {
+  transform: translateY(-2px);
+  transition: 0.2s;
+}
+.card-img-top {
+  height: 260px;
+  object-fit: cover;
+}
+
+/* Botones */
+.btn-primary {
+  background: var(--ups-blue);
+  border-color: var(--ups-blue);
+}
+.btn-primary:hover {
+  background: var(--ups-sky);
+  border-color: var(--ups-sky);
+}
+.btn-success {
+  background: #148447;
+  border-color: #148447;
+}
+.btn-warning {
+  background: var(--ups-yellow);
+  border-color: var(--ups-yellow);
+  color: #1a1a1a;
+}
+
+/* Botón Ver tráiler (pastilla) */
+.btn-trailer {
+  background: var(--ups-blue);
+  border-color: var(--ups-blue);
+  color: #fff;
+  border-radius: 9999px;
+  padding: 0.45rem 1rem;
+  box-shadow: 0 6px 14px rgba(30, 122, 214, 0.25);
+}
+.btn-trailer:hover {
+  background: var(--ups-sky);
+  border-color: var(--ups-sky);
+}
+
+/* Badges y etiquetas */
+.badge.bg-secondary {
+  background: var(--ups-yellow) !important;
+  color: #1a1a1a;
+}
+
+/* Formularios */
+.form-control {
+  border-radius: 10px;
+  border-color: var(--cp-border);
+}
+.form-control:focus {
+  border-color: var(--ups-blue);
+  box-shadow: 0 0 0 0.2rem rgba(30, 122, 214, 0.15);
+}
+.invalid-feedback {
+  color: #dc2626;
+}
+.form-text {
+  color: var(--cp-muted);
+}
+
+/* Contenedores y espaciado */
+.container {
+  max-width: 1200px;
+}
+.row.g-4 > [class*="col-"] {
+  padding-bottom: 0.75rem;
+} /* extra separación vertical */
+
+/* Footer */
+footer small {
+  opacity: 0.9;
+}
+
+/* Enlaces */
+a {
+  color: var(--ups-sky);
+}
+a:hover {
+  color: #0f4d93;
+}

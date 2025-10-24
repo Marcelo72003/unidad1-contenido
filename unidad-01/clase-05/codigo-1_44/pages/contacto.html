@@ -4,49 +4,200 @@
     <meta charset="UTF-8" />
     <title>CineUPS — Contacto</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google Fonts (tema) -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+
+    <!-- Estilos del tema (asegúrate de la ruta correcta) -->
     <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
-    <div class="container py-5">
-      <h2 class="mb-4">Contáctanos</h2>
-      <form id="form-contacto" novalidate>
-        <div class="mb-3">
-          <label for="nombre" class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="nombre" required />
+    <!-- NAVBAR común -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="/index.html">CinePlus</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navCine"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navCine">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/pages/renta.html">Renta</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/pages/contacto.html">Contacto</a>
+            </li>
+          </ul>
         </div>
-        <div class="mb-3">
-          <label for="correo" class="form-label">Correo electrónico</label>
-          <input type="email" class="form-control" id="correo" required />
-        </div>
-        <div class="mb-3">
-          <label for="mensaje" class="form-label">Mensaje</label>
-          <textarea
-            class="form-control"
-            id="mensaje"
-            rows="4"
-            required
-          ></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
-        <div id="alerta" class="alert alert-success mt-3 d-none">
-          Mensaje enviado con éxito.
-        </div>
-      </form>
-    </div>
+      </div>
+    </nav>
 
+    <!-- Encabezado con el look del tema -->
+    <header class="hero">
+      <div class="container py-4 text-center text-dark">
+        <h1 class="mb-1">Contáctanos</h1>
+        <p class="lead mb-0">¿Dudas o sugerencias? ¡Te leemos!</p>
+      </div>
+    </header>
+
+    <!-- Contenido principal (sticky footer: main flex:1) -->
+    <main class="container py-4">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card p-4">
+            <form id="form-contacto" novalidate>
+              <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" required />
+                <div class="invalid-feedback">
+                  Por favor, ingresa tu nombre.
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="correo" class="form-label"
+                  >Correo electrónico</label
+                >
+                <input type="email" class="form-control" id="correo" required />
+                <div class="invalid-feedback">
+                  Ingresa un correo válido (ej: nombre@dominio.com).
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="mensaje" class="form-label">Mensaje</label>
+                <textarea
+                  class="form-control"
+                  id="mensaje"
+                  rows="4"
+                  required
+                ></textarea>
+                <div class="invalid-feedback">
+                  El mensaje debe tener entre 20 y 50 caracteres.
+                </div>
+                <div class="form-text">Entre 20 y 50 caracteres.</div>
+              </div>
+
+              <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+                <a href="/index.html" class="btn btn-outline-secondary"
+                  >Volver al inicio</a
+                >
+              </div>
+
+              <div id="alerta" class="alert mt-3 d-none" role="alert"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer pegado al borde inferior -->
+    <footer class="text-center py-3">
+      <small>&copy; 2024 CinePlus — Universidad Politécnica Salesiana.</small>
+    </footer>
+
+    <!-- Librerías -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Marca la página activa en el navbar -->
     <script>
-      $("#form-contacto").on("submit", function (e) {
-        e.preventDefault();
-        if (this.checkValidity()) {
-          $("#alerta").removeClass("d-none").hide().fadeIn();
-          setTimeout(() => $("#alerta").fadeOut(), 3000);
-          this.reset();
-        }
+      (function markActive() {
+        const path = location.pathname.replace(/\/+$/, "") || "/index.html";
+        document.querySelectorAll(".navbar .nav-link").forEach((a) => {
+          const href = a.getAttribute("href");
+          const match = path.endsWith(href.replace(/^\//, ""));
+          if (match) {
+            a.classList.add("active");
+            a.setAttribute("aria-current", "page");
+          }
+        });
+      })();
+    </script>
+
+    <!-- Validación del formulario -->
+    <script>
+      $(function () {
+        $("#form-contacto").on("submit", function (e) {
+          e.preventDefault();
+
+          let valido = true;
+          const $nombre = $("#nombre");
+          const $correo = $("#correo");
+          const $mensaje = $("#mensaje");
+          const nombre = $nombre.val().trim();
+          const correo = $correo.val().trim();
+          const mensaje = $mensaje.val().trim();
+
+          // Limpiar estados previos
+          $("#nombre, #correo, #mensaje").removeClass("is-invalid is-valid");
+
+          // Nombre
+          if (nombre === "") {
+            $nombre.addClass("is-invalid");
+            valido = false;
+          } else {
+            $nombre.addClass("is-valid");
+          }
+
+          // Correo
+          const regexCorreo = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+          if (!regexCorreo.test(correo)) {
+            $correo.addClass("is-invalid");
+            valido = false;
+          } else {
+            $correo.addClass("is-valid");
+          }
+
+          // Mensaje 20–50 chars
+          if (mensaje.length < 20 || mensaje.length > 50) {
+            $mensaje.addClass("is-invalid");
+            valido = false;
+          } else {
+            $mensaje.addClass("is-valid");
+          }
+
+          const $alerta = $("#alerta");
+          if (valido) {
+            $alerta
+              .removeClass("d-none alert-danger")
+              .addClass("alert-success")
+              .text("Mensaje enviado con éxito.")
+              .hide()
+              .fadeIn();
+
+            // reset visual y campos
+            this.reset();
+            $("#nombre, #correo, #mensaje").removeClass("is-valid");
+            setTimeout(() => $alerta.fadeOut(), 3000);
+          } else {
+            $alerta
+              .removeClass("d-none alert-success")
+              .addClass("alert-danger")
+              .text("Por favor corrige los campos marcados.")
+              .hide()
+              .fadeIn();
+          }
+        });
       });
     </script>
   </body>
